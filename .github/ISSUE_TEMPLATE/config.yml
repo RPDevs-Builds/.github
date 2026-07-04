@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Build & Compilation Support
+    url: https://github.com/RPDevs-Builds/kodi-build/issues
+    about: Please report general compilation issues, builder errors, or dependency build failures here.
+  - name: Actions Template Registry
+    url: https://github.com/RPDevs-Builds/github-actions-repo/issues
+    about: Report bugs, submit template improvements, or request new Actions workflow modules here.
