@@ -3,7 +3,7 @@
 **Effective Date:** March 26, 2026
 
 ## 1. Introduction
-This Privacy Policy governs your use of any software applications, binaries, browser extensions, scripts, websites, or related services (collectively, the "Services") provided by RPDevs-Builds or Esoteric Root Collective ("we," "us," or "our"). 
+This Privacy Policy governs your use of any software applications, scripts, configurations, managers, or related services (collectively, the "Services") provided by RPDevs-Vault or Esoteric Root Collective ("we," "us," or "our"). 
 
 Our privacy philosophy is absolute: **what is yours remains yours.** We build our Services to respect your privacy by design and by default. 
 

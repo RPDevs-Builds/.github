@@ -3,7 +3,7 @@
 **Effective Date:** March 26, 2026
 
 ## 1. Acceptance of Terms
-By downloading, installing, accessing, or using any software, scripts, binaries, or services (collectively, the "Software") provided by RPDevs-Builds or Esoteric Root Collective ("we," "us," or "our"), you agree to be bound by these Terms of Use. If you do not agree to these terms, do not use the Software.
+By downloading, installing, accessing, or using any software, scripts, configuration files, playbooks, or services (collectively, the "Software") provided by RPDevs-Vault or Esoteric Root Collective ("we," "us," or "our"), you agree to be bound by these Terms of Use. If you do not agree to these terms, do not use the Software.
 
 ## 2. Open Source Licensing
 Unless otherwise specified by a specific open-source license (such as the MIT License or GNU GPLv3) included within a specific repository, the Software is provided under these general Terms of Use. Where a specific open-source license is provided in the repository (e.g., in a `LICENSE` file), the terms of that specific license shall govern the distribution, modification, and use of the Software, while Section 3 and Section 4 of this document shall strictly govern our liability.

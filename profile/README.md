@@ -1,58 +1,42 @@
-# ⚙️ RPDevs-Builds Compilation & Release Fleet
+# 🏛️ RPDevs-Vault Security Command Center
 
-Welcome to the distribution and build hub of **RPDevs**. This organization operates as a high-performance, self-hosted continuous integration fleet dedicated to automated cross-compilation, packaging, and software release pipelines across RF, embedded, desktop, and mobile architectures.
-
----
-
-## 🏗️ The 2-Core Architecture
-
-RPDevs-Builds operates on a consolidated 2-Core management paradigm to minimize overhead and enforce organizational consistency:
-
-| Core Engine | Purpose | Key Responsibilities |
-| :--- | :--- | :--- |
-| **[devops-manager](https://github.com/RPDevs-Builds/devops-manager)** | 🛡️ **Operational Hub** | Fleet Orchestration, Archival Lifecycle, Global Health Checks, Security Governance, and Notifications. |
-| **[builder-manager](https://github.com/RPDevs-Builds/builder-manager)** | 🏭 **Registry Engine** | Cross-compilation matrices, release packaging logic, and centralized build dependency management. |
+Welcome to the automated core of **RPDevs-Vault**. This organization is a high-performance sovereign hub managed by a consolidated **2-Core Manager Architecture** dedicated to infrastructure telemetry, governance, build fleets, key brokering, task sync, and GitOps distribution.
 
 ---
 
-## 🚀 The Self-Hosted Runner Fleet & NFS Cache
+## 📊 The 2-Core Manager Architecture
 
-Our pipelines run exclusively on our sovereign bare-metal hardware (`linux64` runners like T430 and llmadmin01) bypassing standard GitHub hosted limits.
+| Tier | Manager | Role / Function | Operational Status |
+| :--- | :--- | :--- | :--- |
+| **Tier 1** | **[ops-manager](https://github.com/RPDevs-Vault/ops-manager)** | 🌐 **Global Cockpit & Governance**: Live health, runner telemetry, uptime probes, identity validation, GitOps deployment orchestration, cross-org issue/PR roadmap sync, ADR decision logs, and FIDO2/Age key brokering. | ![Ops Status](https://img.shields.io/badge/Ops-Active-brightgreen) |
+| **Tier 2** | **[builder-manager](https://github.com/RPDevs-Vault/builder-manager)** | 🏗️ **Build Fleet & Dependency Engine**: Automated dependency scanning, multi-platform container compilation, OCI packaging, & NFS/Ccache build caching. | ![Build Fleet](https://img.shields.io/badge/Builder-Online-brightgreen) |
+
+---
+
+## 🚀 Key Capabilities
 
 ```
 +-------------------------------------------------------------------------------+
-|                             RPDevs-Builds Pipeline                            |
+|                            RPDevs-Vault Architecture                          |
 +-------------------------------------------------------------------------------+
 |                                                                               |
-|   [GitHub Repos] ----> [Self-Hosted Runner] <---> [Cloudflare ZT Tunnel]      |
-|                              |                              |                 |
-|                              v                              v                 |
-|                       [Cross-Compiler]              [NFS Cache Storage]       |
-|                     (GCC/Clang/MSVC/SDK)         (/mnt/sharedroot/shared)     |
-|                              |                                                |
-|                              v                                                |
-|         [GitHub Releases / Packages] <---- [fetch_latest.py]                  |
-|                              |                                                |
-|                              v                                                |
-|                 [rpdevs-builds.github.io Index]                               |
+|             [ops-manager]  =================================>                 |
+|         (Telemetry / GitOps / Tasks)                                          |
+|                      ||                                                       |
+|                      || Triggers                                              |
+|                      \/                                                       |
+|           [builder-manager]                                                   |
+|         (CI/CD / Dependency Engine)                                           |
 |                                                                               |
 +-------------------------------------------------------------------------------+
 ```
 
-### ⚡ Centralized Caching
-Instead of pulling toolchains and dependencies repeatedly over the WAN, all our self-hosted runners inject global cache targets for `ccache`, `pip`, `npm`, `cargo`, and `go` directly to a high-speed NFS mount point (`/mnt/sharedroot/github_runners/shared`). The NFS storage is mounted securely over **Cloudflare TCP Tunnels**, bypassing firewall limitations while keeping transit fully encrypted.
+* **Hardware-Bound Secrets (Tier 1):** Symmetric Age encryption natively bound to physical FIDO2 hardware keys via custom wrappers inside `ops-manager/identity/`. Credentials only exist in-memory during workflow executions.
+* **Unified Build Fleet (Tier 2):** Decoupled, high-speed cross-compilation pipeline utilizing local shared caching over NFS/Ccache across runner platforms, integrated with automated weekly dependency scans.
+* **Decoupled Release & Deploy (Tier 1):** Absolute decoupling between code compilation and remote host deployment. `ops-manager` automates target host provisioning using isolated Ansible playbooks and target environments.
+* **Unified Workspaces (Tier 1):** Cross-organization issue aggregation, automated backlog roadmaps, and central ADRs (Architectural Decision Records) tracked dynamically in `ops-manager`.
 
----
+### 📦 [View Organization Packages](https://github.com/orgs/RPDevs-Vault/packages)
 
-## 🛠️ Project Ecosystem
+*This organization is fully managed by autonomous DevOps automation.*
 
-While `devops-manager` and `builder-manager` handle the orchestration, the actual compilation matrix spans numerous projects:
-
-*   **Core Systems:** `kexecboot.xyz`, `xbmc-build`, `vlc-live-555`
-*   **OpenWrt & Embedded:** `blackhole-server`, `openwrt-blackhole-feed`, `luci-app-nfs`
-*   **Browser & Media Addons:** `nextdns-firefox-addon`, `kodi-addons`, `script.service.*`, `inputstream.*`
-*   **Release Gateway:** `rpdevs-builds.github.io` (a decoupled static frontend that polls the GitHub API for our releases).
-
-### 📦 [View Released Packages](https://github.com/orgs/RPDevs-Builds/packages)
-
-*This organization operates as a public utility powered by sovereign automation workflows. Privacy by Default: Zero analytics, telemetry, or tracking embedded into any compiled releases.*
